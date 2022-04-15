@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+  list-style: none;
+}
+
+:root {
+  --match: #4caf50;
+  --notMatch: #E53935;
+  --match: #4caf50;
+}
+
+::selection {
+  background-color: transparent;
+}
+
+body {
+  height: 100vh;
+  background-color: #bbdefbab;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.word {
+  margin: 30px 0;
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 20px; */
+  font-size: 8em;
+  color: #555;
+  padding: 0 15px;
+
+}
+
+.history {
+  /* margin-top: 100px; */
+  width: 100%;
+  min-height: 110px;
+  padding: 0 10px;
+  /* border: 3px solid #4caf50; */
+  overflow: auto;
+}
+
+.history .historyWord {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8em;
+  color: #555;
+}
+
+.box {
+  text-align: center;
+  font-size: 90px;
+  width: 110px;
+  height: 110px;
+  /* border-radius: 10px; */
+  /* border: 3px solid #4caf50; */
+  background-color: #fff;
+  color: #333;
+  text-transform: uppercase;
+  /* margin: 0 5px; */
+  transition: .5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px 0px #6161616c;
+
+}
+
+
+.check {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  font-size: 1.5em;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+
+}
+
+.match {
+  background-color: var(--match);
+  border: 3px solid transparent;
+  color: #fff;
+}
+
+.noMatch {
+  background-color: var(--notMatch);
+  border: 3px solid var(--notMatch);
+  color: #fff;
+}
+
+.notPlaced {
+  background-color: #FB8C00;
+  border: 3px solid #FB8C00;
+  color: #fff;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  padding: 15px 5px;
+}
+
+::-webkit-scrollbar-track {
+  padding: 15px 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #61616100;
+  border-radius: 15px;
+}
+:hover::-webkit-scrollbar-thumb {
+  background-color: #61616171;
+}
