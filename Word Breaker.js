@@ -40,25 +40,6 @@ let theWord = "";
 window.onload = () => {
   generateWord();
 };
-// start.addEventListener("click", () => {
-//   check.style.display = "none";
-//   timeleft.innerHTML = document.querySelector(".active").dataset.duration;
-//   word.innerHTML = 3;
-//   total.innerHTML = words.length;
-//   setOverlay.classList.toggle("show-overlay");
-//   mainCountDown();
-// });
-
-// function mainCountDown() {
-//   setTimeout(() => {}, 2000);
-//   let count = setInterval(() => {
-//     word.innerHTML--;
-//     if (word.innerHTML <= 0) {
-//       clearInterval(count);
-//       generateWord();
-//     }
-//   }, 1000);
-// }
 
 function generateWord() {
   theWord = words[Math.floor(Math.random() * words.length)];
@@ -138,4 +119,3 @@ check.addEventListener("click", (event) => {
     });
   }
 });
-/*************** */
