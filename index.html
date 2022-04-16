@@ -13,13 +13,20 @@
     <link rel="stylesheet" href="Word Breaker.css" />
   </head>
   <body>
-<div class="container">
-  <div class="word"></div>
-  <div class="history"></div>
-  <button class="check">check</button>
-</div>
-  
-    
+    <div class="container">
+      <div class="word"></div>
+      <div class="history"></div>
+      <aside>
+        <button class="check">check</button>
+        <div class="color" style="background-color: var(--match)"></div>
+        <span>Correct</span>
+        <div class="color" style="background-color: var(--notPlaced)"></div>
+        <span>Not in place</span>
+        <div class="color" style="background-color: var(--notMatch)"></div>
+        <span>Not Available</span>
+      
+      </aside>
+    </div>
 
     <script src="Word Breaker.js"></script>
   </body>

@@ -8,14 +8,14 @@ const words = [
   // "Code",
   "Javascript",
   // "Town",
-  // "Country",
+  "Country",
   //   "Testing",
   // "Youtube",
   //   "Linkedin",
   // "Twitter",
   //   "Github",
-    // "Leetcode",
-  //   "Internet",
+  // "Leetcode",
+  "Internet",
   //   "Python",
   //   "Scala",
   //   "Destructuring",
@@ -40,7 +40,6 @@ let theWord = "";
 window.onload = () => {
   generateWord();
 };
-
 function generateWord() {
   theWord = words[Math.floor(Math.random() * words.length)];
   let wordIndex = words.indexOf(theWord);
@@ -71,7 +70,7 @@ function generateBoxs(randomWord) {
     };
   }
   word.firstElementChild.focus();
-  check.style.display = "block";
+  check.disabled = false;
 }
 check.addEventListener("click", (event) => {
   let boxes = Array.from(document.querySelectorAll(".word .box"));
@@ -100,7 +99,7 @@ check.addEventListener("click", (event) => {
   let match = document.querySelectorAll(".word .box.match");
 
   if (match.length == theWord.length) {
-    check.style.display = "none";
+    check.disabled = true;
     if (words.length > 0) {
       setTimeout(() => {
         generateWord();

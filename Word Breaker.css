@@ -10,7 +10,7 @@
 :root {
   --match: #4caf50;
   --notMatch: #E53935;
-  --match: #4caf50;
+  --notPlaced: #FB8C00;
 }
 
 ::selection {
@@ -31,6 +31,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+
 }
 
 .word {
@@ -64,10 +65,9 @@ body {
 
 .box {
   text-align: center;
-  font-size: 90px;
-  width: 110px;
-  height: 110px;
-
+  font-size: 80px;
+  width: 90px;
+  height: 90px;
   background-color: #fff;
   color: #333;
   text-transform: uppercase;
@@ -82,16 +82,15 @@ body {
 
 
 .check {
-  position: fixed;
-  top: 60px;
-  right: 10px;
-  font-size: 1.5em;
+  box-shadow: 0px 2px 5px  #6161616c;
   background-color: #4caf50;
   color: #fff;
-  padding: 15px 40px;
+  width: 80px;
+  height: 80px;
   border: none;
   border-radius: 10px;
   text-transform: uppercase;
+  margin-bottom: 60px;
 
 }
 
@@ -108,8 +107,8 @@ body {
 }
 
 .notPlaced {
-  background-color: #FB8C00;
-  border: 3px solid #FB8C00;
+  background-color: var(--notPlaced);
+  border: 3px solid var(--notPlaced);
   color: #fff;
 }
 
@@ -122,10 +121,39 @@ body {
 ::-webkit-scrollbar-track {
   padding: 15px 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #61616100;
   border-radius: 15px;
 }
+
 :hover::-webkit-scrollbar-thumb {
   background-color: #61616171;
+}
+
+aside {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 110px;
+  background-color: #fff;
+  padding: 20px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 500;
+  align-items: center;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0px 2px 5px 0px #6161616c;
+  font-size: 12px;
+
+}
+
+aside .color {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px 0px #6161616c;
+
 }
