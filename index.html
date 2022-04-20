@@ -11,23 +11,48 @@
     />
 
     <link rel="stylesheet" href="Word Breaker.css" />
+    <link rel="stylesheet" href="My Framework.css">
   </head>
   <body>
-    <div class="container">
-      <div class="word"></div>
-      <div class="history"></div>
-      <aside>
-        <button class="check">check</button>
-        <div class="color" style="background-color: var(--match)"></div>
-        <span>Correct</span>
-        <div class="color" style="background-color: var(--notPlaced)"></div>
-        <span>Not in place</span>
-        <div class="color" style="background-color: var(--notMatch)"></div>
-        <span>Not Available</span>
-      
-      </aside>
-    </div>
+    <div class="container flx">
+      <div class="game"></div>
 
+      <div class="keyboard">
+        <div class="row">
+          <span class="row-button">a</span> <span class="row-button">z</span>
+          <span class="row-button">e</span>
+          <span class="row-button">r</span>
+          <span class="row-button">t</span>
+          <span class="row-button">y</span>
+          <span class="row-button">u</span>
+          <span class="row-button">i</span>
+          <span class="row-button">o</span>
+          <span class="row-button">p</span>
+        </div>
+        <div class="row">
+          <span class="row-button">q</span> <span class="row-button">s</span>
+          <span class="row-button">d</span>
+          <span class="row-button">f</span>
+          <span class="row-button">g</span>
+          <span class="row-button">h</span>
+          <span class="row-button">j</span>
+          <span class="row-button">k</span>
+          <span class="row-button">l</span>
+        </div>
+        <div class="row">
+          <span class="row-button clear">clear</span>
+          <span class="row-button">w</span>
+          <span class="row-button">x</span>
+          <span class="row-button">c</span>
+          <span class="row-button">v</span>
+          <span class="row-button">b</span>
+          <span class="row-button">n</span>
+          <span class="row-button">m</span>
+          <span class="row-button enter">enter</span>
+        </div>
+      </div>
+    </div>
+   
     <script src="Word Breaker.js"></script>
   </body>
 </html>

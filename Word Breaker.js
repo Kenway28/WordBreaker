@@ -1,120 +1,135 @@
-let word = document.querySelector(".word");
-let history = document.querySelector(".history");
-let check = document.querySelector(".check");
-const words = [
-  // "Hello",
-  // "Lotfi",
-  "Programming",
-  // "Code",
-  "Javascript",
-  // "Town",
-  "Country",
-  //   "Testing",
-  // "Youtube",
-  //   "Linkedin",
-  // "Twitter",
-  //   "Github",
-  // "Leetcode",
-  "Internet",
-  //   "Python",
-  //   "Scala",
-  //   "Destructuring",
-  // "Paradigm",
-  //   "Styling",
-  //   "Cascade",
-  //   "Documentation",
-  //   "Coding",
-  //   "Funny",
-  //   "Working",
-  //   "Dependencies",
-  //   "Task",
-  // "Runner",
-  //   "Roles",
-  // "Test",
-  //   "Rust",
-  //   "Playing",
-];
-
-let theWord = "";
-
+letterBtn = document.querySelectorAll(".row-button:not(.clear, .enter)");
+btnEnter = document.querySelector(".enter");
+btnClear = document.querySelector(".clear");
+game = document.querySelector(".game");
 window.onload = () => {
-  generateWord();
+  generateGame();
 };
-function generateWord() {
-  theWord = words[Math.floor(Math.random() * words.length)];
-  let wordIndex = words.indexOf(theWord);
-  word.innerHTML = "";
-  history.innerHTML = "";
-  words.splice(wordIndex, 1);
-  generateBoxs(theWord);
-}
-function generateBoxs(randomWord) {
-  console.log(randomWord);
-  for (let index = 0; index < randomWord.length; index++) {
-    let box = document.createElement("span");
-    box.contentEditable = "true";
-    box.className = "box";
-    word.appendChild(box);
-  }
-  let input = document.querySelectorAll(".box");
 
-  for (let i = 0; i < input.length; i++) {
-    input[i].onkeyup = function (event) {
-      if (input[i].innerHTML.length == 1) {
-        event.preventDefault();
-        if (input[i + 1] === input[input.length]) {
+// let Vlist =
+//   "variety various vehicle version victims victory village virtual visible visited vitamin vaccine vaginal vampire variant varsity varying veggies verdict veteran vicious villain violate viruses visions visuals volcano";
+let Vlist = "last games hospital visited guns cottage";
+let theWord =
+  Vlist.split(" ")[Math.floor(Math.random() * Vlist.split(" ").length)];
+
+console.log(theWord);
+
+// letterBtn.forEach((e) => {
+//   e.addEventListener("click", () => {
+//     let row = document.querySelector(".line:not(.locked)");
+//     // console.log(row);
+//     for (let i = 0; i < Array.from(row.children).length; i++) {
+//       if (Array.from(row.children)[i].innerHTML == "") {
+//         // console.log(i);
+//         Array.from(row.children)[i].innerHTML = e.innerHTML;
+//         break;
+//       }
+//     }
+//   });
+// });
+
+// btnEnter.addEventListener("click", () => {
+//   let row = document.querySelector(".line:not(.locked)");
+//   let emptyLetter = row.querySelectorAll(".letter:empty").length;
+//   if (emptyLetter == 0) {
+//     row.classList.add("locked");
+//     // console.log(row.querySelectorAll(".letter:empty").length);
+//     let boxes = Array.from(row.children);
+
+//     boxes.forEach((box) => {
+//       box.style.transitionDelay = `${0.1 * boxes.indexOf(box)}s`;
+//       if (theWord.includes(box.innerHTML)) {
+//         if (theWord.charAt(boxes.indexOf(box)) === box.innerHTML) {
+//           box.className = "letter match";
+//         } else {
+//           box.className = "letter notPlaced";
+//         }
+//       } else {
+//         box.className = "letter noMatch";
+//       }
+//       letterBtn.forEach((letter) => {
+//         if (letter.innerHTML == box.innerHTML) {
+//           // console.log(letter.className);
+//           letter.className = `row-button ${box.className.split(" ")[1]}`;
+//           // console.log(letter.className);
+//         }
+//       });
+//     });
+//   } else {
+//     alert("To Short");
+//   }
+// });
+// btnClear.addEventListener("click", () => {
+//   let row = document.querySelector(".line:not(.locked)");
+//   for (let i = Array.from(row.children).length - 1; i > -1; i--) {
+//     if (Array.from(row.children)[i].innerHTML != "") {
+//       Array.from(row.children)[i].innerHTML = "";
+//       break;
+//     }
+//   }
+// });
+
+document.body.addEventListener("keydown", (event) => {
+  let row = document.querySelector(".line:not(.locked)");
+  // console.log(event);
+  if (event.key.match(/[a-z]/) && event.key != "Enter" && event.key != "Backspace") {
+    for (let i = 0; i < Array.from(row.children).length; i++) {
+      if (Array.from(row.children)[i].innerHTML == "") {
+        Array.from(row.children)[i].innerHTML = event.key;
+        break;
+      }
+    }
+  }
+  if (event.key == "Backspace") {
+    // let row = document.querySelector(".line:not(.locked)");
+    for (let i = Array.from(row.children).length - 1; i > -1; i--) {
+      if (Array.from(row.children)[i].innerHTML != "") {
+        Array.from(row.children)[i].innerHTML = "";
+        break;
+      }
+    }
+  }
+  if (event.key == "Enter") {
+    // let row = document.querySelector(".line:not(.locked)");
+    let emptyLetter = row.querySelectorAll(".letter:empty").length;
+    if (emptyLetter == 0) {
+      row.classList.add("locked");
+      // console.log(row.querySelectorAll(".letter:empty").length);
+      let boxes = Array.from(row.children);
+
+      boxes.forEach((box) => {
+        box.style.transitionDelay = `${0.05 * boxes.indexOf(box)}s`;
+        if (theWord.includes(box.innerHTML)) {
+          if (theWord.charAt(boxes.indexOf(box)) === box.innerHTML) {
+            box.className = "letter match";
+          } else {
+            box.className = "letter notPlaced";
+          }
         } else {
-          input[i + 1].focus();
+          box.className = "letter noMatch";
         }
-      }
-    };
-  }
-  word.firstElementChild.focus();
-  check.disabled = false;
-}
-check.addEventListener("click", (event) => {
-  let boxes = Array.from(document.querySelectorAll(".word .box"));
-  theWord = theWord.toLowerCase();
-
-  boxes.forEach((box) => {
-    if (theWord.includes(box.innerHTML)) {
-      if (theWord.charAt(boxes.indexOf(box)) === box.innerHTML) {
-        box.className = "box match";
-        box.contentEditable = "false";
-      } else {
-        box.className = "box notPlaced";
-      }
-    } else {
-      box.className = "box noMatch";
+        letterBtn.forEach((letter) => {
+          if (letter.innerHTML == box.innerHTML) {
+            // console.log(letter.className);
+            letter.className = `row-button ${box.className.split(" ")[1]}`;
+            // console.log(letter.className);
+          }
+        });
+      });
     }
-    if (box.innerHTML == "") {
-      box.className = "box";
-    }
-  });
-  let clone = word.cloneNode(true);
-  clone.className = "historyWord";
-  Array.from(clone.childNodes).forEach((element) => {
-    element.contentEditable = false;
-  });
-  let match = document.querySelectorAll(".word .box.match");
-
-  if (match.length == theWord.length) {
-    check.disabled = true;
-    if (words.length > 0) {
-      setTimeout(() => {
-        generateWord();
-      }, 1500);
-    } else {
-      event.preventDefault();
-      document.body.innerHTML = "Done";
-    }
-  } else {
-    history.prepend(clone);
-    boxes.forEach((box) => {
-      box.className = "box";
-      box.innerHTML = "";
-      box.contentEditable = true;
-      boxes[0].focus();
-    });
   }
 });
+
+function generateGame() {
+  for (let i = 0; i < 7; i++) {
+    let line = document.createElement("div");
+
+    for (let j = 0; j < theWord.split("").length; j++) {
+      let letter = document.createElement("span");
+      letter.className = "letter";
+      line.className = "line";
+      line.appendChild(letter);
+    }
+    game.appendChild(line);
+  }
+}

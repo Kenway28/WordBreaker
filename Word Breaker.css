@@ -10,7 +10,7 @@
 :root {
   --match: #4caf50;
   --notMatch: #E53935;
-  --notPlaced: #FB8C00;
+  --notPlaced: #616161;
 }
 
 ::selection {
@@ -19,141 +19,133 @@
 
 body {
   height: 100vh;
-  background-color: #bbdefbab;
+  background-color: #f5f5f5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   overflow: hidden;
 }
-
 
 .container {
-  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.game {
   display: flex;
   flex-direction: column;
-
+  /* grid-template-columns: repeat(5, 1fr); */
+  gap: 3px;
+  /* width: 400px; */
+  height: fit-content;
+  margin-top: 25px;
+  /* position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%); */
 }
 
-.word {
-  margin: 30px 0;
-  width: 100%;
+.game .line {
   display: flex;
+  gap: 3px;
+}
+
+.letter {
+  display: flex;
+  width: 60px;
+  height: 60px;
   justify-content: center;
   align-items: center;
-  font-size: 8em;
-  color: #555;
-  padding: 0 15px;
-
+  font-size: 3.1em;
+  border: 2px solid #81c784;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 7px;
+  color: #393E4C;
+  transition: 0.8s ease-in-out;
+  backface-visibility: hidden;
 }
 
-.history {
-  width: 100%;
-  min-height: 110px;
-  padding: 0 10px;
-  overflow: auto;
-}
-
-.history .historyWord {
-  margin: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 8em;
-  color: #555;
-}
-
-.box {
-  text-align: center;
-  font-size: 80px;
-  width: 90px;
-  height: 90px;
+/* keayboard */
+.keyboard {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #fff;
-  color: #333;
-  text-transform: uppercase;
-  transition: .5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-shadow: 0px 2px 5px 0px #6161616c;
-
+  display: none;
+  flex-direction: column;
+  padding: 3px;
+  box-shadow: 0px -5px 25px rgba(161, 159, 159, 0.527);
+ 
+  border-radius: 5px 5px 0 0;
+  border: 2px solid #ccc;
 }
 
+.row {
+  display: flex;
+}
 
-.check {
-  box-shadow: 0px 2px 5px  #6161616c;
-  background-color: #4caf50;
-  color: #fff;
-  width: 80px;
-  height: 80px;
+.row-button {
+  align-items: center;
+  background-color: #dce1ed;
+  color: #5a6376 !important;
+  border: 2px solid transparent;
+  /* border-radius: 4px; */
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex: 1 1;
+  font-size: 17px !important;
+  font-weight: 700;
+  justify-content: center;
+  margin: 1px;
+  min-height: 46px;
+  padding: 1px;
+  text-transform: capitalize;
+  transition: .2s;
+}
+
+.row-button:hover {
+  background-color: #afb2bb;
+}
+
+.enter,
+.clear {
+  flex: 2 1;
+}
+
+.match,
+.noMatch,
+.notPlaced {
   border: none;
-  border-radius: 10px;
-  text-transform: uppercase;
-  margin-bottom: 60px;
-
+  color: #fff !important;
+  transform: rotateX(360deg);
 }
 
 .match {
   background-color: var(--match);
-  border: 3px solid transparent;
-  color: #fff;
+
+
 }
 
 .noMatch {
   background-color: var(--notMatch);
-  border: 3px solid var(--notMatch);
-  color: #fff;
 }
 
 .notPlaced {
   background-color: var(--notPlaced);
-  border: 3px solid var(--notPlaced);
-  color: #fff;
 }
 
-
-::-webkit-scrollbar {
-  width: 5px;
-  padding: 15px 5px;
-}
-
-::-webkit-scrollbar-track {
-  padding: 15px 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #61616100;
-  border-radius: 15px;
-}
-
-:hover::-webkit-scrollbar-thumb {
-  background-color: #61616171;
-}
-
-aside {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 110px;
-  background-color: #fff;
-  padding: 20px 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-weight: 500;
-  align-items: center;
-  border-radius: 10px 0 0 10px;
-  box-shadow: 0px 2px 5px 0px #6161616c;
-  font-size: 12px;
-
-}
-
-aside .color {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 5px 0px #6161616c;
-
+@media (max-width: 767px) {
+  .keyboard {
+    display: flex;
+    width: 500px;
+   
+  }
+  .row-button{
+    min-height: 40px !important;
+  }
 }
