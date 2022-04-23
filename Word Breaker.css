@@ -26,6 +26,7 @@ body {
   /* align-items: center; */
   position: relative;
   overflow: hidden;
+
 }
 
 .container {
@@ -39,7 +40,7 @@ body {
   flex-direction: column;
   gap: 3px;
   height: fit-content;
-  /* margin-top: 25px; */
+
 
 }
 
@@ -48,13 +49,13 @@ body {
   gap: 3px;
 }
 
-.letter {
+.game .line .letter {
   display: flex;
   width: 70px;
   height: 70px;
   justify-content: center;
   align-items: center;
-  font-size: 3.1em;
+  font-size: 3.1em !important;
   border: 1px solid #81c784;
   text-transform: uppercase;
   font-weight: 500;
@@ -63,11 +64,13 @@ body {
   transition: 0.8s ease-in-out;
   backface-visibility: hidden;
 }
+
 body.dark .letter {
   transition: 0.25s;
   color: #fafafa !important;
   border: 1px solid #616161 !important;
 }
+
 /* keayboard */
 .keyboard {
   position: absolute;
@@ -194,12 +197,25 @@ body.dark .settings-overlay {
   margin-top: 120px;
 }
 
+.settings-box h1 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 4em;
+  color: #333;
+}
+
+body.dark .settings-box h1 {
+  transition: 0.25s;
+  color: #fafafa !important;
+}
+
 .settings-box .set {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 15px 0;
+  color: #333;
 }
 
 .settings-box h2 {
@@ -214,7 +230,7 @@ body.dark .settings-box h2 {
 
 .settings-box .level-list {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   font-size: 25px;
 }
 
@@ -227,10 +243,14 @@ body.dark .settings-box h2 {
   cursor: pointer;
 }
 
+body.dark .settings-box .level-list li {
+  color: #fff !important;
+}
+
 .settings-box .level-list li.level {
   background-color: #4caf50;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 /* toggle button */
@@ -243,9 +263,9 @@ body.dark .settings-box h2 {
 }
 
 #toggle.active {
-  background: #4caf4faf !important;
-  box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
-    inset 0 8px 8px rgba(0, 0, 0, 0.1), inset 0 -4px 4px rgba(0, 0, 0, 0.05);
+  background: #4caf4f !important;
+  /* box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+    inset 0 8px 8px rgba(0, 0, 0, 0.1), inset 0 -4px 4px rgba(0, 0, 0, 0.05); */
 }
 
 #toggle .indicator {

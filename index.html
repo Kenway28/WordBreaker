@@ -21,6 +21,7 @@
     </div>
     <div class="settings-overlay">
       <div class="settings-box">
+        <h1>Settings</h1>
         <div class="set">
           <h2>Dark Mode</h2>
           <div id="toggle" data-mode="light">
@@ -82,17 +83,12 @@
     <script src="Word Breaker.js"></script>
     <script>
       let burger = document.querySelector(".hamburger");
-      var settings = document.querySelector(".settings-overlay");
+      var settingsPanel = document.querySelector(".settings-overlay");
       burger.addEventListener("click", () => {
         burger.classList.toggle("arrow-up");
-        settings.toggleAttribute("open");
+        settingsPanel.toggleAttribute("open");
       });
-      let toggle = document.getElementById("toggle");
-      let indicator = document.querySelector(".indicator");
-      toggle.onclick = function () {
-        document.body.classList.toggle("dark")
-        toggle.classList.toggle("active");
-      };
+
     </script>
   </body>
 </html>
