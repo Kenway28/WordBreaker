@@ -1,7 +1,8 @@
-## WordBreaker
+### update 1.3
 
-### update 1.2.1
-
+- Add Visual Keyboard
+- Make Design Responsive
+- Update CSS Style
 - Add Local Storage Option
 
 ### update 1.2

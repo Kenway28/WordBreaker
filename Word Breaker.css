@@ -10,7 +10,7 @@
 :root {
   --match: #4caf50;
   --notMatch: #E53935;
-  --notPlaced: #616161;
+  --notPlaced: #FFA726;
 }
 
 ::selection {
@@ -32,13 +32,13 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 40px;
 }
 
 .game {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   height: fit-content;
 
 
@@ -46,29 +46,27 @@ body {
 
 .game .line {
   display: flex;
-  gap: 3px;
+  gap: 2px;
 }
 
 .game .line .letter {
   display: flex;
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   justify-content: center;
   align-items: center;
-  font-size: 3.1em !important;
-  border: 1px solid #81c784;
+  font-size: 3em !important;
   text-transform: uppercase;
   font-weight: 500;
-  border-radius: 7px;
   color: #393E4C;
-  transition: 0.8s ease-in-out;
+  transition: 0.25s ease-in-out;
   backface-visibility: hidden;
+  background-color: #999999bd;
 }
 
 body.dark .letter {
-  transition: 0.25s;
+  transition: 0.25s ease-in-out;
   color: #fafafa !important;
-  border: 1px solid #616161 !important;
 }
 
 /* keayboard */
@@ -77,14 +75,11 @@ body.dark .letter {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff;
-  display: none;
+  background-color: transparent;
+  display: flex;
   flex-direction: column;
-  padding: 3px;
-  box-shadow: 0px -5px 25px rgba(161, 159, 159, 0.527);
-
-  border-radius: 5px 5px 0 0;
-  border: 2px solid #ccc;
+  padding: 10px 0;
+  max-width: 500px;
 }
 
 .row {
@@ -93,11 +88,8 @@ body.dark .letter {
 
 .row-button {
   align-items: center;
-  background-color: #dce1ed;
-  color: #5a6376 !important;
-  border: 2px solid transparent;
-  /* border-radius: 4px; */
-  color: inherit;
+  background-color: #9999999c;
+  color: #616161 !important;
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -107,6 +99,7 @@ body.dark .letter {
   justify-content: center;
   margin: 1px;
   min-height: 46px;
+  min-width: 48px;
   padding: 1px;
   text-transform: capitalize;
   transition: .2s;
@@ -114,6 +107,10 @@ body.dark .letter {
 
 .row-button:hover {
   background-color: #afb2bb;
+}
+
+body.dark .row-button {
+  color: #fafafa !important;
 }
 
 .enter,
@@ -124,33 +121,29 @@ body.dark .letter {
 .match,
 .noMatch,
 .notPlaced {
-  border: none !important;
   color: #fff !important;
   transform: rotateX(360deg);
 }
 
 .match {
-  background-color: var(--match);
+  background-color: var(--match) !important;
 }
 
 .noMatch {
-  background-color: var(--notMatch);
+  background-color: var(--notMatch) !important;
 }
 
 .notPlaced {
-  background-color: var(--notPlaced);
+  background-color: var(--notPlaced) !important;
 }
 
 @media (max-width: 767px) {
   .keyboard {
     display: flex;
-    width: 500px;
-
+    width: 100%;
   }
 
-  .row-button {
-    min-height: 40px !important;
-  }
+
 }
 
 .hamburger {

@@ -41,7 +41,7 @@ toggle.onclick = function () {
 function saveSettings(settings) {
   localStorage.setItem("WordLe", JSON.stringify(settings));
 }
-let WordList = "last gone games hospital visited accept reload";
+let WordList = "last must gone games hospital visited accept reload";
 let theWord;
 let words;
 levels.forEach((lvl) => {
@@ -68,7 +68,7 @@ function generateGame(size) {
   console.log(theWord);
   game.innerHTML = "";
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 6; i++) {
     let line = document.createElement("div");
     line.className = "line";
     for (let j = 0; j < size; j++) {
@@ -131,5 +131,58 @@ document.body.addEventListener("keydown", (event) => {
       }, 2000);
     } 
     console.log(row.querySelectorAll(".letter.match").length);
+  }
+});
+
+letterBtn.forEach((e) => {
+  e.addEventListener("click", () => {
+    let row = document.querySelector(".game .line:not(.locked)");
+    // console.log(row);
+    for (let i = 0; i < Array.from(row.children).length; i++) {
+      if (Array.from(row.children)[i].innerHTML == "") {
+        // console.log(i);
+        Array.from(row.children)[i].innerHTML = e.innerHTML;
+        break;
+      }
+    }
+  });
+});
+btnEnter.addEventListener("click", () => {
+  let row = document.querySelector(".game .line:not(.locked)");
+  let emptyLetter = row.querySelectorAll(".letter:empty").length;
+  if (emptyLetter == 0) {
+    row.classList.add("locked");
+    // console.log(row.querySelectorAll(".letter:empty").length);
+    let boxes = Array.from(row.children);
+
+    boxes.forEach((box) => {
+      box.style.transitionDelay = `${0.1 * boxes.indexOf(box)}s`;
+      if (theWord.includes(box.innerHTML)) {
+        if (theWord.charAt(boxes.indexOf(box)) === box.innerHTML) {
+          box.className = "letter match";
+        } else {
+          box.className = "letter notPlaced";
+        }
+      } else {
+        box.className = "letter noMatch";
+      }
+      letterBtn.forEach((letter) => {
+        if (letter.innerHTML == box.innerHTML) {
+          letter.className = `row-button ${box.className.split(" ")[1]}`;
+        }
+      });
+    });
+  } else {
+    alert("To Short");
+  }
+});
+
+btnClear.addEventListener("click", () => {
+  let row = document.querySelector(".game .line:not(.locked)");
+  for (let i = Array.from(row.children).length - 1; i > -1; i--) {
+    if (Array.from(row.children)[i].innerHTML != "") {
+      Array.from(row.children)[i].innerHTML = "";
+      break;
+    }
   }
 });
